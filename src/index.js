@@ -15,13 +15,14 @@ import { createBrowserHistory } from "history";
 import { routerReducer } from "./reducer";
 import routerMiddleware from "./middleware";
 import { startListener } from "./listener";
+import userReducer from "./reducers/userReducer";
 
 // import { startListener } from "./Routing/listener";
 // import { push } from "../actions";
 
 const history = createBrowserHistory();
 
-const rootReducer = combineReducers({ router: routerReducer });
+const rootReducer = combineReducers({ router: routerReducer, userReducer });
 
 // Build the middleware
 const middleware = routerMiddleware(history);
