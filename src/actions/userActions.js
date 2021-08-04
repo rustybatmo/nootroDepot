@@ -6,7 +6,7 @@ import { CREATE_USER } from "./ActionConstants";
 //   };
 // };
 
-const createUser = () => {
+export const createUser = (payload) => {
   return {
     type: CREATE_USER,
     payload: payload,
