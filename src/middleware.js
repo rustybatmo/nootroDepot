@@ -1,4 +1,4 @@
-import { GO, GO_BACK, GO_FORWARD, PUSH, REPLACE } from "../Actions/constants";
+import { GO, GO_BACK, GO_FORWARD, PUSH, REPLACE } from "./constants.js";
 
 const routerMiddleware = (history) => () => (next) => (action) => {
   switch (action.type) {
@@ -21,3 +21,5 @@ const routerMiddleware = (history) => () => (next) => (action) => {
       return next(action);
   }
 };
+
+export default routerMiddleware;

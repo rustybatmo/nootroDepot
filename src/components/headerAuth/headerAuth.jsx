@@ -1,18 +1,17 @@
 import styles from "./headerAuth.module.css";
-import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { push } from "../../actions";
 
-const HeaderAuth = () => {
+const HeaderAuth = (props) => {
+  const { push } = props;
   return (
     <ul style={styles}>
-      <li>
-        <a href="/signin"> Sign in </a>
-      </li>
-      <li>
-        <a href="/createAccount"> Create An Account </a>
-      </li>
+      <li onClick={() => push("/signin")}>Sign In</li>
+      <li onClick={() => push("/createaccount")}>Create an account</li>
+
       {/* <Link to="/home">Create Account</Link> */}
     </ul>
   );
 };
 
-export default HeaderAuth;
+export default connect(null, { push })(HeaderAuth);

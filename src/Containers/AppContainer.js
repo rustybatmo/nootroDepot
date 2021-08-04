@@ -2,28 +2,23 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Header from "../components/header/header";
 import HeaderAuth from "../components/headerAuth/headerAuth";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
 import CreateAccount from "../components/Authentication/CreateAccount/createAccount";
 import SignIn from "../components/Authentication/SignIn/signIn";
+import { push } from "../actions";
 
 class AppContainer extends Component {
   constructor(props) {
     super(props);
   }
+
   render() {
+    const { router, push } = this.props;
+
     return (
       <React.Fragment>
         <HeaderAuth />
         <Header />
-        <Router>
-          <Route path="/signin">
-            <SignIn />
-          </Route>
-          <Route path="/createAccount">
-            <CreateAccount />
-          </Route>
-        </Router>
+        {router.pathname === "/signin" ? <SignIn></SignIn> : <CreateAccount />}
       </React.Fragment>
     );
   }
@@ -31,8 +26,8 @@ class AppContainer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    noOfCakes: state.noOfCakes,
+    router: state.router,
   };
 };
 
-export default connect(mapStateToProps, null)(AppContainer);
+export default connect(mapStateToProps, { push })(AppContainer);

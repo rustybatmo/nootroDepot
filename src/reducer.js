@@ -1,3 +1,5 @@
+import { LOCATION_CHANGE } from "./constants";
+
 const initialState = { pathname: "/", search: "", hash: "" };
 
 export const routerReducer = (state = initialState, action) => {
