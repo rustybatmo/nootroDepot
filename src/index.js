@@ -17,6 +17,7 @@ import routerMiddleware from "./middleware";
 import { startListener } from "./listener";
 import userReducer from "./reducers/userReducer";
 import thunk from "redux-thunk";
+import { productReducer } from "./reducers/productReducer";
 
 // import { startListener } from "./Routing/listener";
 // import { push } from "../actions";
@@ -26,6 +27,7 @@ const history = createBrowserHistory();
 const rootReducer = combineReducers({
   router: routerReducer,
   userReducer,
+  productReducer,
 });
 
 // Build the middleware

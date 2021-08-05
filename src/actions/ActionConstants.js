@@ -1,1 +1,2 @@
 export const CREATE_USER = "CREATE_USER";
+export const UPDATE_PRODUCT_LIST = "UPDATE_PRODUCT_LIST";

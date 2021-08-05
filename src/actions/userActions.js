@@ -1,11 +1,5 @@
 import { CREATE_USER } from "./ActionConstants";
 
-// export const createUserThunk = (payload) => {
-//   return (dispatch) => {
-//     http.post("http://localhost:3000/users");
-//   };
-// };
-
 export const createUserThunk = (payload) => {
   return (dispatch) => {
     console.log("This si the dispatch");

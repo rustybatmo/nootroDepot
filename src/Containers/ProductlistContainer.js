@@ -1,13 +1,30 @@
 import React from "react";
+import { getProductsThunk } from "../actions/productActions";
+import { connect } from "react-redux";
+import ProductBox from "../components/ProductBox/productBox";
 
 class ProductListContainer extends React.Component {
+  componentDidMount() {
+    const { getProductsThunk } = this.props;
+    getProductsThunk();
+  }
   render() {
-    return (
-      <React.Fragment>
-        <div>This is the products list</div>
-      </React.Fragment>
-    );
+    const { productList = [], getProductsThunk } = this.props;
+
+    const productBoxList = productList.map((product) => (
+      <ProductBox key={product.id} name={product.name} price={product.price} />
+    ));
+    return <React.Fragment>{productBoxList}</React.Fragment>;
   }
 }
 
-export default ProductListContainer;
+const mapStateToProps = (state) => {
+  return {
+    state,
+    productList: state.productReducer,
+  };
+};
+
+export default connect(mapStateToProps, { getProductsThunk })(
+  ProductListContainer
+);
