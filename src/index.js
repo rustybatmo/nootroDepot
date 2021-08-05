@@ -16,20 +16,28 @@ import { routerReducer } from "./reducer";
 import routerMiddleware from "./middleware";
 import { startListener } from "./listener";
 import userReducer from "./reducers/userReducer";
+import thunk from "redux-thunk";
 
 // import { startListener } from "./Routing/listener";
 // import { push } from "../actions";
 
 const history = createBrowserHistory();
 
-const rootReducer = combineReducers({ router: routerReducer, userReducer });
+const rootReducer = combineReducers({
+  router: routerReducer,
+  userReducer,
+});
 
 // Build the middleware
 const middleware = routerMiddleware(history);
 
 // import cakeReducer from "../reducers/reducer";
 
-const store = createStore(rootReducer, {}, applyMiddleware(middleware, logger));
+const store = createStore(
+  rootReducer,
+  {},
+  applyMiddleware(thunk, middleware, logger)
+);
 startListener(history, store);
 
 // Now you can read location data from the store!

@@ -28,9 +28,7 @@ class CreateAccount extends React.Component {
   handleSubmit = (e) => {
     const { createUser } = this.props;
     const { email, password, country, fname, lname } = this.state;
-
     //After validation
-
     createUser({ email, password, country, fname, lname });
     e.preventDefault();
   };
@@ -93,7 +91,9 @@ class CreateAccount extends React.Component {
               value={lname}
             />
           </label>
-          <input onClick={this.handleSubmit} type="submit" />
+          <button onClick={this.handleSubmit} type="submit">
+            Submit
+          </button>
         </form>
       </div>
     );
