@@ -5,6 +5,7 @@ import HeaderAuth from "../components/headerAuth/headerAuth";
 import CreateAccount from "../components/Authentication/CreateAccount/createAccount";
 import SignIn from "../components/Authentication/SignIn/signIn";
 import { push } from "../actions";
+import HomepageContainer from "./Homepage/HomepageContainer";
 
 class AppContainer extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class AppContainer extends Component {
         <HeaderAuth />
         <Header />
         {router.pathname === "/signin" ? <SignIn></SignIn> : <CreateAccount />}
+        <HomepageContainer />
       </React.Fragment>
     );
   }
