@@ -2,6 +2,10 @@ import React from "react";
 import ProductListContainer from "../ProductlistContainer";
 
 class HomepageContainer extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <React.Fragment>

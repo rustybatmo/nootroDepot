@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 // import { push } from "../../../redux-first-routing/actions";
-import { createUser } from "../../../actions/userActions";
+import createUserThunk from "../../../actions/userActions";
 
 class CreateAccount extends React.Component {
   constructor(props) {
@@ -9,6 +9,7 @@ class CreateAccount extends React.Component {
     this.state = {
       email: "",
       password: "",
+      confirmPassword: "",
       country: "",
       fname: "",
       lname: "",
@@ -26,15 +27,24 @@ class CreateAccount extends React.Component {
   };
 
   handleSubmit = (e) => {
-    const { createUser } = this.props;
-    const { email, password, country, fname, lname } = this.state;
+    // const { createUser } = this.props;
+    const { email, password, confirmPassword, country, fname, lname } =
+      this.state;
     //After validation
-    createUser({ email, password, country, fname, lname });
     e.preventDefault();
+    createUserThunk({
+      email,
+      password,
+      confirmPassword,
+      country,
+      fname,
+      lname,
+    });
   };
 
   render() {
-    const { email, password, country, fname, lname } = this.state;
+    const { email, password, confirmPassword, country, fname, lname } =
+      this.state;
 
     return (
       <div>
@@ -55,6 +65,15 @@ class CreateAccount extends React.Component {
               type="text"
               name="password"
               value={password}
+            />
+          </label>
+          <label>
+            confirmPassword
+            <input
+              onChange={this.handleChange}
+              type="text"
+              name="confirmPassword"
+              value={confirmPassword}
             />
           </label>
 
@@ -100,4 +119,4 @@ class CreateAccount extends React.Component {
   }
 }
 
-export default connect(null, { createUser })(CreateAccount);
+export default connect(null, null)(CreateAccount);

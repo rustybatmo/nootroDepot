@@ -7,10 +7,15 @@ import SignIn from "../components/Authentication/SignIn/signIn";
 // import { push } from "../redux-first-routing/actions";
 import { push } from "../redux-first-routing/actions";
 import HomepageContainer from "./Homepage/HomepageContainer";
+import BodyContainer from "./BodyContainer/BodyContainer";
 
 class AppContainer extends Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    console.log("app container is getting called?");
   }
 
   render() {
@@ -18,10 +23,12 @@ class AppContainer extends Component {
 
     return (
       <React.Fragment>
+        {/* Whether user logged in or not has to be available here */}
         <HeaderAuth />
         <Header />
-        {router.pathname === "/signin" ? <SignIn></SignIn> : <CreateAccount />}
-        <HomepageContainer />
+
+        {/* {router.pathname === "/signin" ? <SignIn></SignIn> : <CreateAccount />} */}
+        <BodyContainer />
       </React.Fragment>
     );
   }

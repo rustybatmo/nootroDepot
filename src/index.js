@@ -12,6 +12,9 @@ import { startListener } from "./redux-first-routing/listener";
 import userReducer from "./reducers/userReducer";
 import thunk from "redux-thunk";
 import { productReducer } from "./reducers/productReducer";
+import axios from "axios";
+
+axios.defaults.withCredentials = true;
 
 const history = createBrowserHistory();
 
