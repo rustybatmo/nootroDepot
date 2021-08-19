@@ -18,6 +18,14 @@ class Header extends React.Component {
           <li>BUYING GUIDES</li>
           <li>JOIN NEWSLETTER</li>
         </ul>
+        <div>
+          Info that should be hid
+          <ul>
+            <li>Account</li>
+            <li>Orders</li>
+            <li>Returns</li>
+          </ul>
+        </div>
       </div>
     );
   }

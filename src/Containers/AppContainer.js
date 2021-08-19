@@ -4,7 +4,8 @@ import Header from "../components/header/header";
 import HeaderAuth from "../components/headerAuth/headerAuth";
 import CreateAccount from "../components/Authentication/CreateAccount/createAccount";
 import SignIn from "../components/Authentication/SignIn/signIn";
-import { push } from "../actions";
+// import { push } from "../redux-first-routing/actions";
+import { push } from "../redux-first-routing/actions";
 import HomepageContainer from "./Homepage/HomepageContainer";
 
 class AppContainer extends Component {

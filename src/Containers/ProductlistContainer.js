@@ -9,7 +9,7 @@ class ProductListContainer extends React.Component {
     getProductsThunk();
   }
   render() {
-    const { productList = [], getProductsThunk } = this.props;
+    const { productList = [] } = this.props;
 
     const productBoxList = productList.map((product) => (
       <ProductBox key={product.id} name={product.name} price={product.price} />

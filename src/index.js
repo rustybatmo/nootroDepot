@@ -1,26 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
-// import AppContainer from "./Containers/AppContainer";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
-// import store from "./store/store";
 import AppContainer from "./Containers/AppContainer";
 import logger from "redux-logger";
-
-// import rootReducer from "../reducers/rootReducer";
-
 import { combineReducers, applyMiddleware, createStore } from "redux";
 import { createBrowserHistory } from "history";
-import { routerReducer } from "./reducer";
+import { routerReducer } from "./redux-first-routing/reducer";
 import routerMiddleware from "./middleware";
-import { startListener } from "./listener";
+import { startListener } from "./redux-first-routing/listener";
 import userReducer from "./reducers/userReducer";
 import thunk from "redux-thunk";
 import { productReducer } from "./reducers/productReducer";
-
-// import { startListener } from "./Routing/listener";
-// import { push } from "../actions";
 
 const history = createBrowserHistory();
 

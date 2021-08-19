@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { push } from "../../../actions";
+// import { push } from "../../../redux-first-routing/actions";
 import { createUser } from "../../../actions/userActions";
 
 class CreateAccount extends React.Component {

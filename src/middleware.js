@@ -1,4 +1,10 @@
-import { GO, GO_BACK, GO_FORWARD, PUSH, REPLACE } from "./constants.js";
+import {
+  GO,
+  GO_BACK,
+  GO_FORWARD,
+  PUSH,
+  REPLACE,
+} from "./redux-first-routing/constants.js";
 
 const routerMiddleware = (history) => () => (next) => (action) => {
   switch (action.type) {

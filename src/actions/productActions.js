@@ -2,7 +2,7 @@ import { UPDATE_PRODUCT_LIST } from "./ActionConstants";
 
 export const getProductsThunk = () => {
   return (dispatch) => {
-    fetch("http://localhost:3000/products")
+    fetch("http://localhost:4000/products")
       .then((res) => res.json())
       .then((json) => {
         console.log("hey there");
