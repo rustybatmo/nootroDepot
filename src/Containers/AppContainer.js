@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Header from "../components/header/header";
 import HeaderAuth from "../components/headerAuth/headerAuth";
+import AuthContextProvider from "../contexts/AuthContext";
 import { push } from "../redux-first-routing/actions";
 import BodyContainer from "./BodyContainer/BodyContainer";
 
@@ -17,9 +18,11 @@ class AppContainer extends Component {
   render() {
     return (
       <React.Fragment>
-        <HeaderAuth />
-        <Header />
-        <BodyContainer />
+        <AuthContextProvider>
+          <HeaderAuth />
+          <Header />
+          <BodyContainer />
+        </AuthContextProvider>
       </React.Fragment>
     );
   }

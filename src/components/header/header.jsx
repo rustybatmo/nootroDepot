@@ -2,13 +2,12 @@ import React from "react";
 import styles from "./header.module.css";
 import { connect } from "react-redux";
 import { push } from "../../redux-first-routing/actions";
+import { AuthContext } from "../../contexts/AuthContext";
 
 class Header extends React.Component {
   render() {
-    const style = {
-      color: "red",
-    };
     const { push } = this.props;
+    const { isLoggedIn } = this.context;
     return (
       <div className={styles.header}>
         <img src="https://cdn11.bigcommerce.com/s-cebedmpn/images/stencil/original/nd-logo_1625583949__13657.original.png"></img>
@@ -29,9 +28,12 @@ class Header extends React.Component {
             <li>Returns</li>
           </ul>
         </div>
+        <button onClick={() => console.log(isLoggedIn)}> Value</button>
       </div>
     );
   }
 }
+
+Header.contextType = AuthContext;
 
 export default connect(null, { push })(Header);
