@@ -3,7 +3,6 @@
 import { locationChange } from "./actions";
 
 export function startListener(history, store) {
-  console.log("Fisrt time");
   store.dispatch(
     locationChange({
       pathname: history.location.pathname,
@@ -13,9 +12,6 @@ export function startListener(history, store) {
   );
   history.listen((info) => {
     const { location } = info;
-    console.log("Change before happening");
-    console.log(location);
-    console.log("After happening");
 
     store.dispatch(
       locationChange({

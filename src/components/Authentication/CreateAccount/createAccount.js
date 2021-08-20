@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-// import { push } from "../../../redux-first-routing/actions";
-import createUserThunk from "../../../actions/userActions";
+import axios from "axios";
+import { push } from "../../../redux-first-routing/actions";
 
 class CreateAccount extends React.Component {
   constructor(props) {
@@ -13,6 +13,8 @@ class CreateAccount extends React.Component {
       country: "",
       fname: "",
       lname: "",
+      errorMessage: "",
+      successMessage: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,25 +28,55 @@ class CreateAccount extends React.Component {
     });
   };
 
-  handleSubmit = (e) => {
-    // const { createUser } = this.props;
+  createUser = (userInfo) => {
+    const { push } = this.props;
+    axios.post("http://localhost:5000/auth/register", userInfo).then((res) => {
+      if (res.data === true) {
+        console.log("User is now registered and logged in");
+        this.setState(
+          {
+            successMessage: "User created. You will be redirected in 3 seconds",
+          },
+          () => {
+            setTimeout(() => {
+              push("/");
+            }, 3000);
+          }
+        );
+      } else {
+        this.setState({
+          errorMessage: "User creation failed",
+        });
+      }
+    });
+  };
+
+  handleSubmit = async (e) => {
     const { email, password, confirmPassword, country, fname, lname } =
       this.state;
-    //After validation
+    const { push } = this.props;
+    const userInfo = {
+      email,
+      password,
+      confirmPassword,
+    };
+
     e.preventDefault();
-    createUserThunk({
+
+    this.createUser(userInfo);
+  };
+
+  render() {
+    const {
       email,
       password,
       confirmPassword,
       country,
       fname,
       lname,
-    });
-  };
-
-  render() {
-    const { email, password, confirmPassword, country, fname, lname } =
-      this.state;
+      errorMessage,
+      successMessage,
+    } = this.state;
 
     return (
       <div>
@@ -113,10 +145,13 @@ class CreateAccount extends React.Component {
           <button onClick={this.handleSubmit} type="submit">
             Submit
           </button>
+
+          <div style={{ color: "red" }}>{errorMessage}</div>
+          <div style={{ color: "green" }}>{successMessage}</div>
         </form>
       </div>
     );
   }
 }
 
-export default connect(null, null)(CreateAccount);
+export default connect(null, { push })(CreateAccount);

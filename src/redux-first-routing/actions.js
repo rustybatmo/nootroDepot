@@ -26,7 +26,6 @@ export const goForward = () => ({ type: GO_FORWARD });
 //history listener that responds to navigation by dispatching a new action containing the new location information.
 
 export const locationChange = ({ pathname, search, hash }) => {
-  console.log(" Pathname : " + pathname);
   return {
     type: LOCATION_CHANGE,
     payload: { pathname, search, hash },
