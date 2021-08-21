@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Header from "../components/header/header";
@@ -13,6 +14,18 @@ class AppContainer extends Component {
 
   componentDidMount() {
     console.log("app container is getting called?");
+    axios
+      .get("http://localhost:5000/auth/loggedIn")
+      .then((res) => {
+        if (res.data) {
+          console.log("user is logged in");
+        } else {
+          console.log("User is not logged in");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   render() {

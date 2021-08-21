@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import { push } from "../../../redux-first-routing/actions";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 class CreateAccount extends React.Component {
   constructor(props) {
@@ -20,6 +21,8 @@ class CreateAccount extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  static contextType = AuthContext;
+
   handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -29,6 +32,7 @@ class CreateAccount extends React.Component {
   };
 
   createUser = (userInfo) => {
+    const { toggleLogIn } = this.context;
     const { push } = this.props;
     axios.post("http://localhost:5000/auth/register", userInfo).then((res) => {
       if (res.data === true) {
@@ -40,6 +44,7 @@ class CreateAccount extends React.Component {
           () => {
             setTimeout(() => {
               push("/");
+              toggleLogIn();
             }, 3000);
           }
         );
@@ -144,6 +149,15 @@ class CreateAccount extends React.Component {
           </label>
           <button onClick={this.handleSubmit} type="submit">
             Submit
+          </button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              console.log(this.context);
+            }}
+          >
+            {" "}
+            testing
           </button>
 
           <div style={{ color: "red" }}>{errorMessage}</div>

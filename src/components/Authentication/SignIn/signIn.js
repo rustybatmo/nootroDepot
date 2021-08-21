@@ -1,13 +1,16 @@
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect, Fragment, useContext } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import { push } from "../../../redux-first-routing/actions";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 const SignIn = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+
+  const { isLoggedIn, toggleLogIn } = useContext(AuthContext);
 
   const { push } = props;
 
@@ -25,6 +28,7 @@ const SignIn = (props) => {
           setSuccessMessage("Login successful. You'll be redicted in 2s");
           setTimeout(() => {
             push("/");
+            toggleLogIn();
           }, 2000);
         } else {
           setErrorMessage(res.data);

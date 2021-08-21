@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import SignIn from "../../components/Authentication/SignIn/signIn";
 import CreateAccount from "../../components/Authentication/CreateAccount/createAccount";
 import ProductlistContainer from "../ProductlistContainer";
+import Cart from "../Cart/Cart";
 // import CreateAccount from "../../components/Authentication/CreateAccount/CreateAccount";
 
 const BodyContainer = (props) => {
@@ -15,6 +16,8 @@ const BodyContainer = (props) => {
     component = <CreateAccount />;
   } else if (pathname === "/") {
     component = <ProductlistContainer />;
+  } else if (pathname === "/cart") {
+    component = <Cart />;
   } else {
     component = <div>Undecided page</div>;
   }

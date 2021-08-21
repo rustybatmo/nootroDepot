@@ -19,16 +19,15 @@ class Header extends React.Component {
           <li>TOP SELLERS</li>
           <li>BUYING GUIDES</li>
           <li>JOIN NEWSLETTER</li>
+          <li onClick={() => push("/cart")}>CART</li>
         </ul>
-        <div>
-          Info that should be hid
+        {isLoggedIn && (
           <ul>
             <li>Account</li>
             <li>Orders</li>
             <li>Returns</li>
           </ul>
-        </div>
-        <button onClick={() => console.log(isLoggedIn)}> Value</button>
+        )}
       </div>
     );
   }
