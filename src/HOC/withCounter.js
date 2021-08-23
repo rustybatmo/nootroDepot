@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { updateProduct } from "../actions/productActions";
 
 const withCounter = (WrappedComponent) => {
   class NewComponent extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        count: 0,
+        count: props.count,
       };
       this.handleClick = this.handleClick.bind(this);
     }
@@ -14,12 +15,23 @@ const withCounter = (WrappedComponent) => {
       const { name, price, id } = this.props;
       const { count } = this.state;
       const operator = e.target.name;
+
       if (operator === "+") {
-        this.setState((prevState) => {
-          return {
-            count: prevState.count + 1,
-          };
-        });
+        this.setState(
+          (prevState) => {
+            return {
+              count: prevState.count + 1,
+            };
+          },
+          () => {
+            const count = this.state.count;
+            const obj = {
+              id,
+              count,
+            };
+            updateProduct(obj);
+          }
+        );
       } else {
         if (count !== 0) {
           this.setState((prevState) => {
