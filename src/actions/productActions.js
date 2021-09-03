@@ -32,8 +32,10 @@ export const updateProduct = (payload) => {
     list: result,
   };
   console.log(newPayload);
+  console.log("Is it getting called");
+
   return {
-    action: UPDATE_PRODUCT,
+    type: UPDATE_PRODUCT,
     payload: newPayload,
   };
 };

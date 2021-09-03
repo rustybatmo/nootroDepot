@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { updateProduct } from "../actions/productActions";
+import { connect } from "react-redux";
+import { compose } from "redux";
 
 const withCounter = (WrappedComponent) => {
+  console.log("This is the props");
+  // console.log(props)
   class NewComponent extends React.Component {
     constructor(props) {
       super(props);
@@ -12,7 +16,7 @@ const withCounter = (WrappedComponent) => {
     }
 
     handleClick = (e) => {
-      const { name, price, id } = this.props;
+      const { name, price, id, updateProduct } = this.props;
       const { count } = this.state;
       const operator = e.target.name;
 
@@ -25,6 +29,7 @@ const withCounter = (WrappedComponent) => {
           },
           () => {
             const count = this.state.count;
+            console.log(count);
             const obj = {
               id,
               count,
@@ -79,4 +84,9 @@ const withCounter = (WrappedComponent) => {
 
   return NewComponent;
 };
-export default withCounter;
+
+const composedWithCounter = compose(
+  connect(null, { updateProduct }),
+  withCounter
+);
+export default composedWithCounter;

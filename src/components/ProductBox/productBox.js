@@ -1,6 +1,7 @@
 import "./productBox.css";
-import { useState } from "react";
+import { useState, useDispatch } from "react";
 import withCounter from "../../HOC/withCounter";
+import composedWithCounter from "../../HOC/withCounter";
 
 const ProductBox = ({ name, price, id, handleClick, count }) => {
   return (
@@ -27,4 +28,4 @@ const ProductBox = ({ name, price, id, handleClick, count }) => {
   );
 };
 
-export default withCounter(ProductBox);
+export default composedWithCounter(ProductBox);

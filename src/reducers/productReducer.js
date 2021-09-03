@@ -19,8 +19,8 @@ const initialState = {
         count: 0,
       },
     },
-    list: [1, 2],
   },
+  list: [1, 2],
 };
 
 export const productReducer = (state = initialState, { type, payload }) => {
@@ -37,13 +37,40 @@ export const productReducer = (state = initialState, { type, payload }) => {
       };
     }
 
-    // case UPDATE_PRODUCT: {
-    //   const { entities = {}, list = [] } = payload;
-    //   const { stateEntitity: entities, stateList: list } = state;
+    case UPDATE_PRODUCT: {
+      let stateEntity = state.entities;
+      let stateList = state.list;
 
-    //   const product = entities.product;
-    //   const updatedEntities = { ...entities, product };
-    // }
+      let existingProducts = { ...stateEntity.products };
+
+      let product = undefined;
+      let list = undefined;
+
+      {
+        let { entities = {}, list = [] } = payload;
+        product = entities.product;
+        list = list;
+      }
+      // let newProduct = product[list[0]];
+
+      // // let updatedProduct = {...existingProducts[newProduct.id], ...newProduct};
+      // let updatedProduct = {
+      //   ...existingProducts[newProduct.id],
+      //   ...newProduct,
+      // };
+
+      // let updatedProducts = {
+      //   ...existingProducts,
+      //   [updatedProduct.id]: updatedProduct,
+      // };
+
+      // let updatedEntities = { ...stateEntity, products: updatedProducts };
+
+      return {
+        ...state,
+        // entities: updatedEntities,
+      };
+    }
 
     default:
       return state;
