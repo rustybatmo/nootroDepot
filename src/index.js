@@ -13,6 +13,7 @@ import userReducer from "./reducers/userReducer";
 import thunk from "redux-thunk";
 import { productReducer } from "./reducers/productReducer";
 import axios from "axios";
+import { cartReducer } from "./reducers/cartReducer";
 
 axios.defaults.withCredentials = true;
 
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   router: routerReducer,
   userReducer,
   productReducer,
+  cartReducer,
 });
 
 // Build the middleware

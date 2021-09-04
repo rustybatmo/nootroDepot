@@ -26,16 +26,8 @@ const productList = (payload) => {
 };
 
 export const updateProduct = (payload) => {
-  const { entities, result } = normalise(payload);
-  let newPayload = {
-    entities,
-    list: result,
-  };
-  console.log(newPayload);
-  console.log("Is it getting called");
-
   return {
     type: UPDATE_PRODUCT,
-    payload: newPayload,
+    payload: payload,
   };
 };

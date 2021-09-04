@@ -1,9 +1,21 @@
 import "./productBox.css";
-import { useState, useDispatch } from "react";
+import { useState, useDispatch } from "react-redux";
 import withCounter from "../../HOC/withCounter";
 import composedWithCounter from "../../HOC/withCounter";
+import { addCartItem } from "../../actions/cartActions";
 
-const ProductBox = ({ name, price, id, handleClick, count }) => {
+const ProductBox = ({ name, price, id, count }) => {
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    const obj = {
+      name,
+      price,
+      id,
+      count,
+    };
+    dispatch(addCartItem(obj));
+  };
   return (
     <div className="product-card">
       <img
@@ -13,7 +25,8 @@ const ProductBox = ({ name, price, id, handleClick, count }) => {
       <div className="title">{name}</div>
       <div>{price}</div>
       <div>
-        {" "}
+        <button onClick={handleClick}>Add Item to cart</button>
+        {/* {" "}
         <button name="-" onClick={handleClick}>
           {" "}
           -{" "}
@@ -22,10 +35,10 @@ const ProductBox = ({ name, price, id, handleClick, count }) => {
         <button name="+" onClick={handleClick}>
           {" "}
           +{" "}
-        </button>
+        </button> */}
       </div>
     </div>
   );
 };
 
-export default composedWithCounter(ProductBox);
+export default ProductBox;

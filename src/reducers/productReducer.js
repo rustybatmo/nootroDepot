@@ -38,37 +38,17 @@ export const productReducer = (state = initialState, { type, payload }) => {
     }
 
     case UPDATE_PRODUCT: {
-      let stateEntity = state.entities;
-      let stateList = state.list;
-
-      let existingProducts = { ...stateEntity.products };
-
-      let product = undefined;
-      let list = undefined;
-
-      {
-        let { entities = {}, list = [] } = payload;
-        product = entities.product;
-        list = list;
-      }
-      // let newProduct = product[list[0]];
-
-      // // let updatedProduct = {...existingProducts[newProduct.id], ...newProduct};
-      // let updatedProduct = {
-      //   ...existingProducts[newProduct.id],
-      //   ...newProduct,
-      // };
-
-      // let updatedProducts = {
-      //   ...existingProducts,
-      //   [updatedProduct.id]: updatedProduct,
-      // };
-
-      // let updatedEntities = { ...stateEntity, products: updatedProducts };
+      const { id, count } = payload;
+      const existingEntities = { ...state.entities };
+      const existingProducts = { ...existingEntities.products };
+      const productToBeUpdated = existingProducts[id];
+      const updatedProduct = { ...productToBeUpdated, count, id };
+      const newProductList = { ...existingProducts, [id]: updatedProduct };
+      const updatedEntities = { ...existingEntities, products: newProductList };
 
       return {
         ...state,
-        // entities: updatedEntities,
+        entities: updatedEntities,
       };
     }
 

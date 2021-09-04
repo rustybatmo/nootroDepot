@@ -28,8 +28,8 @@ const withCounter = (WrappedComponent) => {
             };
           },
           () => {
-            const count = this.state.count;
-            console.log(count);
+            const { count } = this.state;
+
             const obj = {
               id,
               count,
@@ -39,11 +39,22 @@ const withCounter = (WrappedComponent) => {
         );
       } else {
         if (count !== 0) {
-          this.setState((prevState) => {
-            return {
-              count: prevState.count - 1,
-            };
-          });
+          this.setState(
+            (prevState) => {
+              return {
+                count: prevState.count - 1,
+              };
+            },
+            () => {
+              const { count } = this.state;
+
+              const obj = {
+                id,
+                count,
+              };
+              updateProduct(obj);
+            }
+          );
         }
       }
 
