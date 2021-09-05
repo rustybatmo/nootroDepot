@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { connect } from "react-redux";
 import CartItem from "../../components/cartItem/cartItem";
+import { push } from "../../redux-first-routing/actions";
 // import { selectCartItems } from "../../selectors/cartSelectors";
 
 class Cart extends React.Component {
@@ -26,11 +27,17 @@ class Cart extends React.Component {
       );
     });
 
+    const handleCheckout = () => {
+      const { push } = this.props;
+      push("/credentials");
+    };
+
     return (
       <Fragment>
         Cart Page
         {output}
         <h1>Total Price: {totalPrice} $</h1>
+        <button onClick={handleCheckout}>Proceed to Checkout</button>
       </Fragment>
     );
   }
@@ -44,4 +51,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(Cart);
+export default connect(mapStateToProps, { push })(Cart);

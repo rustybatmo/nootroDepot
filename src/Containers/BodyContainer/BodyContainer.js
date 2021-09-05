@@ -5,6 +5,8 @@ import SignIn from "../../components/Authentication/SignIn/signIn";
 import CreateAccount from "../../components/Authentication/CreateAccount/createAccount";
 import ProductlistContainer from "../ProductlistContainer";
 import Cart from "../Cart/Cart";
+import CredentialsModal from "../../components/credentials/credentialsModal";
+import PaymentPage from "../../components/paymentPage/paymentPage";
 // import CreateAccount from "../../components/Authentication/CreateAccount/CreateAccount";
 
 const BodyContainer = (props) => {
@@ -18,6 +20,10 @@ const BodyContainer = (props) => {
     component = <ProductlistContainer />;
   } else if (pathname === "/cart") {
     component = <Cart />;
+  } else if (pathname === "/credentials") {
+    component = <CredentialsModal />;
+  } else if (pathname === "/paymentStatus") {
+    component = <PaymentPage />;
   } else {
     component = <div>Undecided page</div>;
   }
