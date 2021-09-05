@@ -18,6 +18,7 @@ class Cart extends React.Component {
       return (
         <CartItem
           item={product}
+          price={product.price}
           id={product.id}
           count={product.count}
           handlePrice={this.handlePrice}

@@ -15,7 +15,7 @@ const withCounter = (WrappedComponent) => {
     }
 
     handleClick = (e) => {
-      const { name, price, id, updateCartItem } = this.props;
+      const { name, id, updateCartItem, price } = this.props;
       const { count } = this.state;
       const operator = e.target.name;
 
@@ -32,6 +32,8 @@ const withCounter = (WrappedComponent) => {
             const obj = {
               id,
               count,
+              price,
+              operator: "+",
             };
 
             updateCartItem(obj);
@@ -51,6 +53,8 @@ const withCounter = (WrappedComponent) => {
               const obj = {
                 id,
                 count,
+                price,
+                operator: "-",
               };
 
               updateCartItem(obj);

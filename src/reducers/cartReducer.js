@@ -50,9 +50,15 @@ export const cartReducer = (state = initialState, { type, payload }) => {
       };
     }
     case UPDATE_CART_ITEM: {
-      const { id, count } = payload;
+      const { id, count, price, operator } = payload;
+      let updatedPrice;
 
       const existingCartItems = [...state.cartItems];
+      if (operator === "+") {
+        updatedPrice = parseFloat(state.totalPrice) + parseFloat(price);
+      } else {
+        updatedPrice = parseFloat(state.totalPrice) - parseFloat(price);
+      }
 
       const updatedCartItems = existingCartItems.map((item) => {
         if (payload.id === item.id) {
@@ -67,6 +73,7 @@ export const cartReducer = (state = initialState, { type, payload }) => {
 
       return {
         ...state,
+        totalPrice: updatedPrice,
         cartItems: updatedCartItems,
       };
     }
