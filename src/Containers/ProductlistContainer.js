@@ -12,10 +12,10 @@ class ProductListContainer extends React.Component {
     getProductsThunk();
   }
 
-  componentDidUpdate() {
-    // const { productList = [] } = this.props;
-    // localStorage.setItem("productList", JSON.stringify(productList));
-  }
+  // componentDidUpdate() {
+  //   // const { productList = [] } = this.props;
+  //   // localStorage.setItem("productList", JSON.stringify(productList));
+  // }
   render() {
     const { productEntities = {}, productList = [] } = this.props;
 
@@ -23,14 +23,12 @@ class ProductListContainer extends React.Component {
       display: "flex",
       flexDirection: "row",
     };
-    // debugger;
+
     const products = productEntities.products;
-    console.log(products);
-    // console.log(productList);
-    console.log(productList[1]);
+
     const productBoxList = productList.map((id, key) => {
       const product = products[id];
-      console.log(product);
+      // console.log(product);
       return (
         <ProductBox
           key={key}

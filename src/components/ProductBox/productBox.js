@@ -12,7 +12,7 @@ const ProductBox = ({ name, price, id, count }) => {
       name,
       price,
       id,
-      count,
+      count: count + 1,
     };
     dispatch(addCartItem(obj));
   };

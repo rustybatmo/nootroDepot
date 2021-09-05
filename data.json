@@ -3,31 +3,31 @@
     {
       "id": 1,
       "name": "Racetam",
-      "price": "22.99$",
+      "price": "22.99",
       "count": 0
     },
     {
       "id": 2,
       "name": "Vitamin D",
-      "price": "22.99$",
+      "price": "12.99",
       "count": 0
     },
     {
       "id": 3,
       "name": "Glutathione",
-      "price": "22.99$",
+      "price": "32.99",
       "count": 0
     },
     {
       "id": 4,
       "name": "Omega 3",
-      "price": "22.99$",
+      "price": "72.99",
       "count": 0
     },
     {
       "id": 5,
       "name": "Tongkat",
-      "price": "22.99$",
+      "price": "24.99",
       "count": 0
     }
   ]
